@@ -1,0 +1,22 @@
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:8.0  # Versi MySQL yang digunakan
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678  # Ganti dengan password root yang aman
+      MYSQL_DATABASE: testing           # Nama database yang ingin dibuat
+      # MYSQL_USER: user                      # Ganti dengan username baru
+      # MYSQL_PASSWORD: userpassword          # Ganti dengan password untuk user baru
+    ports:
+      - "3307:3306"  # Memetakan port 3307 di host ke kontainer
+    volumes:
+      - mysql_volume:/var/lib/mysql  # Persistensi data untuk database
+    networks:
+      - mysql_network
+
+
+volumes:
+  mysql_volume: # sesuai nama volume
+
+networks:
+  mysql_network: # sesuai nama networks
